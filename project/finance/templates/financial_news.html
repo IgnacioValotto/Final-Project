@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block title %}
+    Quote
+{% endblock %}
+{% block main %}
+<h2 class="titulo-noticias">Financial Market News</h2>
+
+<div class="news-grid">
+    <form action="/" method="get">
+        <input type="text" name="q" placeholder="Buscar noticias...">
+        <button type="submit">Buscar</button>
+    </form>
+    {% for article in articles %}
+    <div class="news-card">
+        <img src="{{ article['urlToImage'] }}" alt="Article Image">
+        <div class="news-card-content">
+            <h3><a href="{{ article['url'] }}">{{ article['title'] }}</a></h3>
+            <p>{{ article['description'] }}</p>
+            <p>Publicado el: {{ article['publishedAt'] }}</p>
+        </div>
+    </div>
+    {% else %}
+    <div>No se encontraron noticias relevantes del mercado financiero.</div>
+    {% endfor %}
+</div>
+{% endblock %}

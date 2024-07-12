@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Trade
+{% endblock %}
+
+{% block main %}
+<script>
+    function updateFormAction() {
+        var action = document.getElementById("action").value;
+        var form = document.getElementById("tradeForm");
+        if(action == "buy") {
+            form.action = "/buy";
+            document.getElementById("symbolInput").style.display = "block";
+            document.getElementById("symbolSelect").style.display = "none";
+        } else {
+            form.action = "/sell";
+            document.getElementById("symbolInput").style.display = "none";
+            document.getElementById("symbolSelect").style.display = "block";
+        }
+    }
+</script>
+
+<form id="tradeForm" method="post">
+    <div class="mb-3">
+        <select id="action" name="action" onchange="updateFormAction()">
+            <option value="buy">Buy</option>
+            <option value="sell">Sell</option>
+        </select>
+    </div>
+    <div class="mb-3" id="symbolInput">
+        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="symbol" placeholder="Choose Stock’s Symbol" type="text">
+    </div>
+    <div class="mb-3" id="symbolSelect" style="display:none;">
+        <select name="symbol">
+            {% for stock in stocks_owned %}
+                <option value="{{ stock.symbol }}">{{ stock.symbol }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="mb-3">
+        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="shares" placeholder="Number of shares" type="number">
+    </div>
+    <button class="btn btn-primary" type="submit">Execute</button>
+</form>
+
+{% endblock %}

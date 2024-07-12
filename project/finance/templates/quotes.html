@@ -1,0 +1,112 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+
+{% block main %}
+
+<body>
+    <h1 class="titulo-estilizado">Acciones y Cotizaciones</h1>
+    <!-- TradingView Widget BEGIN -->
+    <div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+    {
+    "symbols": [
+      {
+        "proName": "FOREXCOM:SPXUSD",
+        "title": "S&P 500 Index"
+      },
+      {
+        "proName": "FOREXCOM:NSXUSD",
+        "title": "US 100 Cash CFD"
+      },
+      {
+        "proName": "FX_IDC:EURUSD",
+        "title": "EUR to USD"
+      },
+      {
+        "proName": "BITSTAMP:BTCUSD",
+        "title": "Bitcoin"
+      },
+      {
+        "proName": "BITSTAMP:ETHUSD",
+        "title": "Ethereum"
+      }
+    ],
+    "showSymbolLogo": true,
+    "isTransparent": false,
+    "displayMode": "adaptive",
+    "colorTheme": "light",
+    "locale": "en"
+  }
+    </script>
+  </div>
+  <!-- TradingView Widget END -->
+
+    <table class="table-acciones">
+        <thead>
+            <tr>
+                <th>Acción</th>
+                <th>Cotización</th>
+                <th>Variación Último Día</th>
+                <th>Variación Último Mes</th>
+                <th>Variación Últimos 6 Meses</th>
+                <th>Detalles</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in data %}
+            <tr>
+                <td>{{ item.symbol }}</td>
+                <td>
+                    {% if item.price is string %}
+                        {{ item.price }}
+                    {% else %}
+                        ${{ item.price | round(2) }}
+                    {% endif %}
+                </td>
+                <td>
+                    {{ item.variation_day | float | round(2) }}%
+                </td>
+                <td>
+                    {{ item.variation_month | float | round(2) }}%
+                </td>
+                <td>
+                    {{ item.variation_6months | float | round(2) }}%
+                </td>
+                <td><a href="{{ url_for('details', symbol=item.symbol) }}">Ver detalles</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <!-- TradingView Widget BEGIN -->
+    <div class="tradingview-widget-container widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+    <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-stock-heatmap.js" async>
+    {
+    "exchanges": [],
+    "dataSource": "SPX500",
+    "grouping": "sector",
+    "blockSize": "market_cap_basic",
+    "blockColor": "change",
+    "locale": "en",
+    "symbolUrl": "",
+    "colorTheme": "light",
+    "hasTopBar": false,
+    "isDataSetEnabled": false,
+    "isZoomEnabled": true,
+    "hasSymbolTooltip": true,
+    "isMonoSize": false,
+    "width": "100%",
+    "height": "100%"
+  }
+    </script>
+    </div>
+  <!-- TradingView Widget END -->
+</body>
+{% endblock %}

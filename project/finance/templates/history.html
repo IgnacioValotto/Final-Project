@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+
+
+<body>
+    <h2 class="titulo-estilizado">History</h2>
+    <table class="table-acciones">
+        <thead>
+            <tr>
+
+                <th>Stock</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>Transaction type</th>
+                <th>Transaction time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for stock in history %}
+            <tr>
+                
+                <td>{{ stock.symbol }}</td>
+                <td>{{ stock.shares }}</td>
+                <td>{{ "%.2f"|format(stock.stock_price) }}</td>
+                <td>{{ stock.transaction_type }}</td>
+                <td>{{ stock.transaction_time }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+
+{% endblock %}

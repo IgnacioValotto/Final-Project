@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Detalles de {{ symbol }}
+{% endblock %}
+
+{% block main %}
+
+</div>
+<!-- TradingView Widget END -->
+    <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
+
+        <script type="text/javascript">
+          new TradingView.widget(
+            {
+              // otras configuraciones
+              "symbol": "{{ symbol }}",
+              // más configuraciones
+            }
+          );
+        </script>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+        {
+        "width": "1300",
+        "height": "800",
+        "symbol": "{{ symbol }}",
+        "interval": "W",
+        "timezone": "Etc/UTC",
+        "theme": "light",
+        "style": "1",
+        "locale": "en",
+        "withdateranges": true,
+        "allow_symbol_change": true,
+        "calendar": false,
+        "studies": [
+          "STD;Volatility_Stop"
+        ],
+        "support_host": "https://www.tradingview.com"
+      }
+        </script>
+      </div>
+
+{% endblock %}

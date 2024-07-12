@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Trade
+{% endblock %}
+
+{% block main %}
+<script>
+    function toggleForm(action) {
+        if (action === 'buy') {
+            document.getElementById('buyForm').style.display = 'block';
+            document.getElementById('sellForm').style.display = 'none';
+        } else if (action === 'sell') {
+            document.getElementById('buyForm').style.display = 'none';
+            document.getElementById('sellForm').style.display = 'block';
+        }
+    }
+</script>
+
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4 white">Operaciones</h1>
+        <div class="d-flex justify-content-around mb-4">
+            <button class="btn btn-primary custom-btn" onclick="toggleForm('buy')">Comprar</button>
+            <button class="btn btn-secondary custom-btn" onclick="toggleForm('sell')">Vender</button>
+        </div>
+
+        <div id="buyForm" class="custom-card p-4" style="display:none;">
+            <h2 class="white">Comprar </h2>
+            <form action="/buy" method="post">
+                <div class="form-group">
+                    <label for="symbolBuy" class="white">Símbolo:</label>
+                    <input type="text" class="form-control" id="symbolBuy" name="symbol" required>
+                </div>
+                <div class="form-group white">
+                    <label for="sharesBuy"class="white">Número:</label>
+                    <input type="number" class="form-control" id="sharesBuy" name="shares" step="0.00000001" required>
+                </div>
+                <button type="submit" class="btn btn-success">Comprar</button>
+            </form>
+        </div>
+
+        <div id="sellForm" class="custom-card p-4" style="display:none;">
+            <h2 class="white">Vender</h2>
+            <form action="/sell" method="post">
+                <div class="form-group">
+                    <label for="symbolSell" class="white">Símbolo:</label>
+                    <select class="form-control" id="symbolSell" name="symbol" required onchange="updateShares()">
+                        {% for stock in stocks_owned %}
+                        <option value="{{ stock.symbol }}" data-shares="{{ stock.shares }}">{{ stock.symbol }} ({{ stock.shares }} acciones)</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="sharesSell" class="white">Número:</label>
+                    <input type="number" class="form-control" id="sharesSell" name="shares" min="1" step="1" required>
+                </div>
+                <button type="submit" class="btn btn-danger">Vender</button>
+            </form>
+        </div>
+        <script>
+        function updateShares() {
+            var select = document.getElementById('symbolSell');
+            var selectedOption = select.options[select.selectedIndex];
+            var shares = selectedOption.getAttribute('data-shares');
+            document.getElementById('sharesSell').max = shares;
+        }
+        </script>
+
+    <!-- Bootstrap y jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function toggleForm(action) {
+            if (action === 'buy') {
+                document.getElementById('buyForm').style.display = 'block';
+                document.getElementById('sellForm').style.display = 'none';
+            } else if (action === 'sell') {
+                document.getElementById('buyForm').style.display = 'none';
+                document.getElementById('sellForm').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+
+{% endblock %}

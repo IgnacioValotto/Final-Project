@@ -1,0 +1,249 @@
+.navbar.navbar-light.bg-light {
+    background-color: #191970 !important; /* Azul marino */
+}
+nav .navbar-brand
+{
+    font-size: xx-large;
+    font-family: 'Times New Roman', Times, serif; /* Fuente Times New Roman */
+    color: white !important;/* Cambia el color del texto a blanco */
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* Delineado negro */
+}
+.white{
+    color:white !important;
+}
+
+.full-height {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.titulo-estilizado {
+
+    font-family: 'Times New Roman', Times, serif; /* Fuente Times New Roman */
+    color: white !important; /* Cambia el color del texto a blanco */
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* Delineado negro */
+}
+
+body {
+    background-image: url('https://cdn.mos.cms.futurecdn.net/nPtWzo4ktswYD4HUMQGj2Z.jpg');
+    background-size: cover; /* Cubre todo el fondo */
+    background-position: center; /* Centra la imagen en el fondo */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-attachment: fixed; /* Mantiene la imagen fija durante el desplazamiento */
+    display: flex;
+    flex-direction: column;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+.contenido {
+    flex: 1;
+}
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 50px; /* Ajusta la altura del footer */
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 10px 0; /* Ajusta el padding para controlar el espacio interior */
+}
+
+footer.mt-auto {
+    background-color: black;
+    color: white;
+}
+
+footer.mt-auto a {
+    color: white;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+.titulo-noticias {
+            color: white; /* Color del texto */
+            display: inline-block; /* Necesario para que el borde se ajuste al texto */
+            padding: 5px; /* Espaciado interno para que el borde no esté justo pegado al texto */
+            -webkit-text-stroke-width: 0.5px; /* Ancho del trazo del texto */
+            -webkit-text-stroke-color: black; /* Color del trazo del texto */
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+.news-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease;
+}
+.news-card:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+.news-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+.news-card-content {
+    padding: 15px;
+}
+.news-card-content h3 {
+    margin-top: 0;
+    font-size: 1.25rem;
+}
+.news-card-content p {
+    color: #666;
+    line-height: 1.5;
+}
+.news-card-content a {
+    text-decoration: none;
+    color: #007bff;
+}
+.news-card-content a:hover {
+    text-decoration: underline;
+}
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    background-color: white; /* Fondo del contenedor en blanco */
+}
+
+.news-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease;
+    background-color: white; /* Fondo de la tarjeta en blanco */
+}
+
+.news-card:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.news-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.news-card-content {
+    padding: 15px;
+}
+
+.news-card-content h3 {
+    margin-top: 0;
+    font-size: 1.25rem;
+    color: black; /* Asegura que el texto sea legible en fondo blanco */
+}
+
+.news-card-content p {
+    color: #666; /* Asegura que el texto sea legible en fondo blanco */
+    line-height: 1.5;
+}
+
+.news-card-content a {
+    text-decoration: none;
+    color: #007bff; /* Color del enlace para contraste */
+}
+
+.news-card-content a:hover {
+    text-decoration: underline;
+}
+/* Estilos para el formulario de búsqueda */
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    width: 300px;
+    padding: 10px;
+    border: 2px solid #007bff; /* Color de borde */
+    border-right: none; /* Elimina el borde derecho para que se fusione con el botón */
+    border-radius: 5px 0 0 5px; /* Bordes redondeados solo en el lado izquierdo */
+    outline: none; /* Elimina el contorno al enfocar */
+}
+
+button[type="submit"] {
+    padding: 10px 20px;
+    border: 2px solid #007bff; /* Color de borde */
+    background-color: #007bff; /* Color de fondo */
+    color: white; /* Color de texto */
+    cursor: pointer; /* Cambia el cursor a una mano al pasar sobre el botón */
+    border-radius: 0 5px 5px 0; /* Bordes redondeados solo en el lado derecho */
+    outline: none; /* Elimina el contorno al enfocar */
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3; /* Oscurece el botón al pasar el mouse */
+}
+
+
+.table-acciones {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table-acciones th, .table-acciones td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.table-acciones th {
+    background-color: #f8f9fa;
+    color: #333;
+    font-weight: 500;
+}
+
+.table-acciones tr:last-child td {
+    border-bottom: none;
+}
+
+.table-acciones tr:hover {
+    background-color: #f5f5f5;
+}
+
+.table-acciones td {
+    background-color: white;
+}
+
+.widget-container {
+        margin-top: 20px; /* Ajusta el valor según necesites */
+    }
+
+    .container {
+        max-width: 800px;
+    }
+    .custom-card {
+        background-color: #1e1e1e;
+        border: none;
+    }
+    .custom-btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .form-control, .btn, .custom-select {
+        border-radius: 20px;
+    }
+    .form-group label {
+        font-weight: bold;
+        color: #9a9a9a;
+    }
